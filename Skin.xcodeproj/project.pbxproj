@@ -14,6 +14,8 @@
 		57DDBB2019DCD0BD00D2CD54 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57DDBB1F19DCD0BD00D2CD54 /* Images.xcassets */; };
 		57DDBB2319DCD0BD00D2CD54 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 57DDBB2119DCD0BD00D2CD54 /* LaunchScreen.xib */; };
 		57DDBB2F19DCD0BD00D2CD54 /* SkinTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB2E19DCD0BD00D2CD54 /* SkinTests.m */; };
+		57DDBB9E19E0F45200D2CD54 /* AddAProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB9D19E0F45200D2CD54 /* AddAProductViewController.m */; };
+		57DDBBA119E1024200D2CD54 /* ProductSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBA019E1024200D2CD54 /* ProductSearchTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		57DDBB2819DCD0BD00D2CD54 /* SkinTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SkinTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DDBB2D19DCD0BD00D2CD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57DDBB2E19DCD0BD00D2CD54 /* SkinTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SkinTests.m; sourceTree = "<group>"; };
+		57DDBB9C19E0F45200D2CD54 /* AddAProductViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAProductViewController.h; sourceTree = "<group>"; };
+		57DDBB9D19E0F45200D2CD54 /* AddAProductViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAProductViewController.m; sourceTree = "<group>"; };
+		57DDBB9F19E1024200D2CD54 /* ProductSearchTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSearchTableViewController.h; sourceTree = "<group>"; };
+		57DDBBA019E1024200D2CD54 /* ProductSearchTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSearchTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,10 @@
 				57DDBB1919DCD0BD00D2CD54 /* ViewController.h */,
 				57DDBB1A19DCD0BD00D2CD54 /* ViewController.m */,
 				57DDBB1C19DCD0BD00D2CD54 /* Main.storyboard */,
+				57DDBB9C19E0F45200D2CD54 /* AddAProductViewController.h */,
+				57DDBB9D19E0F45200D2CD54 /* AddAProductViewController.m */,
+				57DDBB9F19E1024200D2CD54 /* ProductSearchTableViewController.h */,
+				57DDBBA019E1024200D2CD54 /* ProductSearchTableViewController.m */,
 				57DDBB1F19DCD0BD00D2CD54 /* Images.xcassets */,
 				57DDBB2119DCD0BD00D2CD54 /* LaunchScreen.xib */,
 				57DDBB1219DCD0BD00D2CD54 /* Supporting Files */,
@@ -219,6 +229,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57DDBB9E19E0F45200D2CD54 /* AddAProductViewController.m in Sources */,
+				57DDBBA119E1024200D2CD54 /* ProductSearchTableViewController.m in Sources */,
 				57DDBB1B19DCD0BD00D2CD54 /* ViewController.m in Sources */,
 				57DDBB1819DCD0BD00D2CD54 /* AppDelegate.m in Sources */,
 				57DDBB1519DCD0BD00D2CD54 /* main.m in Sources */,
@@ -412,6 +424,7 @@
 				57DDBB3419DCD0BD00D2CD54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		57DDBB3519DCD0BD00D2CD54 /* Build configuration list for PBXNativeTarget "SkinTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +433,7 @@
 				57DDBB3719DCD0BD00D2CD54 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
