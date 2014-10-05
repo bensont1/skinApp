@@ -10,4 +10,6 @@
 
 @interface ProductSearchTableViewController : UITableViewController
 
+@property NSString *query;
+
 @end

@@ -7,8 +7,16 @@
 //
 
 #import "ProductSearchTableViewController.h"
+#import "Product.h"
+
+#define kProductBaseURL @"http://api.v3.factual.com/t/products-cpg-nutrition"
+#define kProductAPIKey @"q64jrzULu3dY7ozineqqGWUBHjCCQfA8Oc8gnr7S"
+#define kProductOAuthSecret @"dQDY2t03yMvBS7IcYz7aDEDfYordRDTEOtZBibuO"
 
 @interface ProductSearchTableViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property NSMutableArray *products;
 
 @end
 
@@ -22,6 +30,19 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.products = [[NSMutableArray alloc] init];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self grabProductData];
+    });
+    
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -29,29 +50,80 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) grabProductData
+{
+    NSString *queryString = [NSString stringWithFormat:@"%@?KEY=%@&q=%@", kProductBaseURL, kProductAPIKey, self.query];
+    NSData *totalProductQuery = [NSData dataWithContentsOfURL:[NSURL URLWithString:queryString]];
+    NSDictionary *products = [NSJSONSerialization JSONObjectWithData:totalProductQuery options:kNilOptions error:Nil];
+    
+    NSDictionary *response = products[@"response"];
+    NSArray *theProducts = response[@"data"];
+    
+    
+    for (NSDictionary *aProduct in theProducts)
+    {
+        Product *thisProduct = [[Product alloc] initWithJSONDictionary:aProduct];
+        [self.products addObject:thisProduct];
+    }
+    
+    NSMutableArray *newIndexPaths = [NSMutableArray new];
+    for(int i = 0; i < 20; i ++)
+    {
+        [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    });
+    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return self.products.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    Product *aProduct = self.products[indexPath.row];
     
-    // Configure the cell...
+    cell.textLabel.text = aProduct.productName;
+    cell.detailTextLabel.text = aProduct.brand;
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSData *imageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:aProduct.thumbnailURL]];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.imageView.image = [UIImage imageWithData:imageData];
+            [cell layoutSubviews];
+        });
+    });
     
     return cell;
 }
-*/
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    /*SPTArticleDetailViewController *detailViewController = [[SPTArticleDetailViewController alloc] initWithNibName:@"SPTArticleDetailViewController" bundle:nil];
+    
+    // Pass the selected object to the new view controller.
+    
+    NSDictionary *dictTemp = [arrItems objectAtIndex:indexPath.row];
+    detailViewController.strDesc = [dictTemp objectForKey:@"Desc"];
+    
+    // Push the view controller.
+    [self.navigationController pushViewController:detailViewController animated:YES]; */
+}
 
 /*
 // Override to support conditional editing of the table view.

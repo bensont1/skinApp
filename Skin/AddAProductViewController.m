@@ -8,6 +8,7 @@
 
 #import "AddAProductViewController.h"
 #import "ProductSearchTableViewController.h"
+#import "Product.h"
 
 @interface AddAProductViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *productTextField;
@@ -34,9 +35,12 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
+    //Product *theProduct = [[Product alloc] init];
+    
     //sending the list of transactions to table view
-    //ProductSearchTableViewController *dest = segue.destinationViewController;
-    //dest.transTableList = self.productTextField.text;
+    ProductSearchTableViewController *dest = segue.destinationViewController;
+    //theProduct.searchString = self.productTextField.text;
+    dest.query = self.productTextField.text;
 }
 
 
