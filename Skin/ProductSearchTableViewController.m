@@ -5,7 +5,7 @@
 //  Created by intel on 10/4/14.
 //  Copyright (c) 2014 klcrozie. All rights reserved.
 //
-
+#import "AddAProductViewController.h"
 #import "ProductSearchTableViewController.h"
 #import "Product.h"
 
@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property NSMutableArray *products;
+@property Product *selectedProduct;
 
 @end
 
@@ -123,7 +124,38 @@
     
     // Push the view controller.
     [self.navigationController pushViewController:detailViewController animated:YES]; */
+    
+    //[self dismissViewControllerAnimated:YES];
+    
+    self.selectedProduct = self.products[indexPath.row];
+    [self performSegueWithIdentifier:@"productSelected" sender:self];
+    
 }
+
+- (IBAction)unwindToAddAProduct:(UIStoryboardSegue *)unwindSegue {
+    /*if ([unwindSegue.sourceViewController isKindOfClass:[ProductSearchTableViewController class]]) {
+        ProductSearchTableViewController *productSearchViewController = unwindSegue.sourceViewController;
+
+        if (productSearchViewController.selectedProduct) {
+            self.productToAdd = productSearchViewController.selectedProduct;
+        }
+    }*/
+    
+    NSLog(@"in unwind segue");
+    
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    AddAProductViewController *dest = [segue destinationViewController];
+    //dest.productToAddasObj = self.selectedProduct;
+    [dest createSelectedProduct:self.selectedProduct.brand productName:self.selectedProduct.productName ingredients:self.selectedProduct.ingredients thumbnailURL:self.selectedProduct.thumbnailURL];
+    //add call to dest function to create Product from new NSObject in addaproductcontroller?
+}
+
+
 
 /*
 // Override to support conditional editing of the table view.

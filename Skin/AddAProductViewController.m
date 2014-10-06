@@ -11,16 +11,26 @@
 #import "Product.h"
 
 @interface AddAProductViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *productLabel;
 @property (weak, nonatomic) IBOutlet UITextField *productTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *listPicker;
+@property Product *productToAdd;
 
 @end
+
+/*@protocol ProductSearchDelegate <NSObject>
+
+- (void)productSearchTableViewController:(ProductSearchTableViewController *)productSearchTableViewController didSelectProduct:(Product *)aNewProduct;
+
+@end*/
 
 @implementation AddAProductViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.productLabel.text = @"";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,6 +51,26 @@
     ProductSearchTableViewController *dest = segue.destinationViewController;
     //theProduct.searchString = self.productTextField.text;
     dest.query = self.productTextField.text;
+    
+}
+
+/*- (void)productSearchTableViewController:(ProductSearchTableViewController *)productSearchTableViewController didSelectProduct:(Product *)aNewProduct {
+    if (aNewProduct) {
+        self.productToAdd = aNewProduct;
+        self.productLabel.text = self.productToAdd.productName;
+    }
+    [self dismissViewControllerAnimated:YES completion: nil];
+}*/
+
+-(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL {
+    self.productToAdd = [[Product alloc] init];
+    
+    self.productToAdd.productName = productName;
+    self.productToAdd.brand = brand;
+    self.productToAdd.ingredients = ingredients;
+    self.productToAdd.thumbnailURL = thumbnailURL;
+    
+    self.productLabel.text = productName;
 }
 
 

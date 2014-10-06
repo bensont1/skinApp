@@ -10,4 +10,7 @@
 
 @interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 
+//@property NSObject *productToAddasObj;
+-(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL;
+
 @end
