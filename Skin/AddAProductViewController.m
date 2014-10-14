@@ -7,14 +7,13 @@
 //
 
 #import "AddAProductViewController.h"
-#import "ProductSearchTableViewController.h"
-#import "Product.h"
 
 @interface AddAProductViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *productLabel;
 @property (weak, nonatomic) IBOutlet UITextField *productTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *listPicker;
 @property Product *productToAdd;
+
 
 @end
 
@@ -47,11 +46,44 @@
     
     //Product *theProduct = [[Product alloc] init];
     
-    //sending the list of transactions to table view
-    ProductSearchTableViewController *dest = segue.destinationViewController;
-    //theProduct.searchString = self.productTextField.text;
-    dest.query = self.productTextField.text;
     
+    //[segue.destinationViewController setDelegate:dest];
+    
+    if ([segue.identifier isEqualToString:@"productSearch"]) {
+        //we are handing off control to another navigation controller, get a reference to it
+        //UINavigationController *navigationController = segue.destinationViewController;
+        // in that navigation controller the first view shown will be our AddItemViewController
+        // get a reference to that controller
+        //ProductSearchTableViewController *controller = (ProductSearchTableViewController *) navigationController.topViewController;
+        ProductSearchTableViewController *controller = segue.destinationViewController;
+        
+        controller.query = self.productTextField.text;
+        // set ourselves as its delegate
+        controller.delegate = self;
+        
+        NSLog(@"in prepare for product search...");
+    }
+
+    
+}
+
+- (void)ProductSearchTableViewController:(ProductSearchTableViewController *)controller didFinishAddingItem:(Product *)item
+{
+    //int newRowIndex = [items count]; [items addObject:item];
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection :0];
+    //NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    // this is a more efficient way of doung [self.tableView reloadData]
+    // reloadData just says that things have changed and that the table
+    // should reload itself, which triggers a big table refresh
+    // this simply tells the table that one new element has appeared
+    // if it is in the view then changes are animated(possibly)
+    // if the object is our of view then the table doesn’t change visually
+    //[self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic]
+    // dismiss our modal view we are done with it
+    self.productToAdd = item;
+    self.productLabel.text = [NSString stringWithFormat:@"%@ %@", self.productToAdd.brand, self.productToAdd.productName];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*- (void)productSearchTableViewController:(ProductSearchTableViewController *)productSearchTableViewController didSelectProduct:(Product *)aNewProduct {
@@ -62,7 +94,7 @@
     [self dismissViewControllerAnimated:YES completion: nil];
 }*/
 
--(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL {
+/*-(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL {
     self.productToAdd = [[Product alloc] init];
     
     self.productToAdd.productName = productName;
@@ -71,7 +103,7 @@
     self.productToAdd.thumbnailURL = thumbnailURL;
     
     self.productLabel.text = productName;
-}
+}*/
 
 
 #pragma mark - Picker

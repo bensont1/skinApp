@@ -7,7 +7,6 @@
 //
 #import "AddAProductViewController.h"
 #import "ProductSearchTableViewController.h"
-#import "Product.h"
 
 #define kProductBaseURL @"http://api.v3.factual.com/t/products-cpg-nutrition"
 #define kProductAPIKey @"q64jrzULu3dY7ozineqqGWUBHjCCQfA8Oc8gnr7S"
@@ -18,6 +17,7 @@
 
 @property NSMutableArray *products;
 @property Product *selectedProduct;
+//@property id delegate;
 
 @end
 
@@ -128,7 +128,10 @@
     //[self dismissViewControllerAnimated:YES];
     
     self.selectedProduct = self.products[indexPath.row];
-    [self performSegueWithIdentifier:@"productSelected" sender:self];
+    
+    [self.delegate ProductSearchTableViewController:self didFinishAddingItem:self.selectedProduct];
+    //[self performSegueWithIdentifier:@"productSelected" sender:self];
+    //[self dismissViewControllerAnimated:YES completion: nil];
     
 }
 
@@ -149,9 +152,9 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    AddAProductViewController *dest = [segue destinationViewController];
+    //AddAProductViewController *dest = [segue destinationViewController];
     //dest.productToAddasObj = self.selectedProduct;
-    [dest createSelectedProduct:self.selectedProduct.brand productName:self.selectedProduct.productName ingredients:self.selectedProduct.ingredients thumbnailURL:self.selectedProduct.thumbnailURL];
+    //[dest createSelectedProduct:self.selectedProduct.brand productName:self.selectedProduct.productName ingredients:self.selectedProduct.ingredients thumbnailURL:self.selectedProduct.thumbnailURL];
     //add call to dest function to create Product from new NSObject in addaproductcontroller?
 }
 

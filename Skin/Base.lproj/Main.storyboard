@@ -50,7 +50,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7T-BA-jX9">
                                 <rect key="frame" x="16" y="154" width="279" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.88666666839999997" green="0.70500935450000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGH-pf-KEi">
@@ -59,13 +59,13 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="bf3-F9-9L6" kind="presentation" id="9eT-ry-G3p"/>
+                                    <segue destination="bf3-F9-9L6" kind="presentation" identifier="productSearch" id="ywo-DJ-xTd"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Add a Product" id="v25-iF-wtI"/>
+                    <navigationItem key="navigationItem" id="xM9-cs-9g5"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="listPicker" destination="VCo-8E-LEn" id="I57-fi-9CS"/>
@@ -75,7 +75,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U2v-fz-EQJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="314" y="-654"/>
+            <point key="canvasLocation" x="846" y="-654"/>
         </scene>
         <!--Which is your product?-->
         <scene sceneID="UuL-3V-FJ9">
@@ -106,8 +106,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="52Y-bX-g3Y" kind="unwind" identifier="productSelected" unwindAction="unwindToAddAProduct:" id="5gK-7y-PfG"/>
-                                    <segue destination="52Y-bX-g3Y" kind="unwind" identifier="productSelected" trigger="accessoryAction" unwindAction="unwindToAddAProduct:" id="vSe-La-5vz"/>
+                                    <segue destination="52Y-bX-g3Y" kind="unwind" identifier="productSelected" unwindAction="unwindToAddAProduct:" id="hRc-Fc-lTo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -119,13 +118,12 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="VVQ-s1-tA9" id="soP-BP-h3t"/>
-                        <segue destination="52Y-bX-g3Y" kind="unwind" unwindAction="unwindToAddAProduct:" id="nLE-Ay-xxU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="De2-Tm-8we" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="52Y-bX-g3Y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="778" y="-654"/>
+            <point key="canvasLocation" x="1310" y="-654"/>
         </scene>
         <!--Current Products-->
         <scene sceneID="MkZ-PS-dF9">
@@ -410,7 +408,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="YZE-YI-eHh" kind="relationship" relationship="viewControllers" id="hjJ-uW-sYK"/>
+                        <segue destination="eva-t5-MqQ" kind="relationship" relationship="viewControllers" id="hjJ-uW-sYK"/>
                         <segue destination="ou8-SG-Gxa" kind="relationship" relationship="viewControllers" id="Lje-7L-Eoq"/>
                         <segue destination="BSP-Gw-461" kind="relationship" relationship="viewControllers" id="p8L-bi-AMq"/>
                         <segue destination="fBy-eS-uJf" kind="relationship" relationship="viewControllers" id="yws-qQ-bEY"/>
@@ -476,6 +474,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iI4-gL-McB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="312" y="1402"/>
+        </scene>
+        <!--Add a Product-->
+        <scene sceneID="Lil-Ou-ceA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eva-t5-MqQ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Add a Product" id="v25-iF-wtI"/>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AGl-4a-Adb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YZE-YI-eHh" kind="relationship" relationship="rootViewController" id="fBZ-9G-6k5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sBa-da-yWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="-654"/>
         </scene>
     </scenes>
 </document>

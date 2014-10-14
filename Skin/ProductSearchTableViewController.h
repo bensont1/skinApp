@@ -7,9 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Product.h"
+
+@class ProductSearchTableViewController;
+
+@protocol ProductSearchTableDelegate <NSObject>
+
+- (void)ProductSearchTableViewController:(ProductSearchTableViewController *)controller didFinishAddingItem:(Product *)item;
+
+@end
+
 
 @interface ProductSearchTableViewController : UITableViewController
 
 @property NSString *query;
+
+@property (weak, nonatomic) id<ProductSearchTableDelegate> delegate;
 
 @end

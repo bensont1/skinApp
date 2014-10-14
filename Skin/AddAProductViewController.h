@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductSearchTableViewController.h"
+#import "Product.h"
 
-@interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ProductSearchTableDelegate>
 
 //@property NSObject *productToAddasObj;
--(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL;
+//-(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL;
 
 @end
