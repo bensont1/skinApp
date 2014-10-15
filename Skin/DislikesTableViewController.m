@@ -7,6 +7,7 @@
 //
 
 #import "DislikesTableViewController.h"
+#import "Product.h"
 #import "List.h"
 //#import "ViewController.h"
 
@@ -51,15 +52,19 @@
     return self.main.dislikesList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dislike" forIndexPath:indexPath];
     
     // Configure the cell...
+    Product *productinCell = (Product *) [self.main.dislikesList objectAtIndex:indexPath.row];
+    cell.textLabel.text = productinCell.productName;
+    cell.detailTextLabel.text = productinCell.brand;
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

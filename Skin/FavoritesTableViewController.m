@@ -7,6 +7,7 @@
 //
 
 #import "FavoritesTableViewController.h"
+#import "Product.h"
 //#import "ViewController.h"
 #import "List.h"
 
@@ -49,15 +50,18 @@
     return self.main.favoritesList.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favorite" forIndexPath:indexPath];
     
     // Configure the cell...
+    Product *productinCell = (Product *) [self.main.favoritesList objectAtIndex:indexPath.row];
+    cell.textLabel.text = productinCell.productName;
+    cell.detailTextLabel.text = productinCell.brand;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

@@ -9,10 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "List.h"
 
-@interface ViewController : UITabBarController
+@interface ViewController : UIViewController
 
-//@property List *listHelper;
-//@property ViewController *main;
 
 @end
 

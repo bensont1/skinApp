@@ -170,11 +170,15 @@
     {
         if(index == 1)
         {
-            [self performSegueWithIdentifier:@"toFavorites" sender:self];
+            //[self performSegueWithIdentifier:@"toFavorites" sender:self];
+            [self.main.favoritesList addObject:self.productToAdd];
+            [self.tabBarController setSelectedIndex:2];
         }
         else
         {
-            [self performSegueWithIdentifier:@"toDislikes" sender:self];
+            //[self performSegueWithIdentifier:@"toDislikes" sender:self];
+            [self.main.dislikesList addObject:self.productToAdd];
+            [self.tabBarController setSelectedIndex:3];
         }
     }
     

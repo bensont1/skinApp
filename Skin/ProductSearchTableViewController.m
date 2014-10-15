@@ -60,7 +60,10 @@
     NSDictionary *response = products[@"response"];
     NSArray *theProducts = response[@"data"];
     
+    int previousProductCount = self.products.count;
     
+    if(theProducts != nil)
+    {
     for (NSDictionary *aProduct in theProducts)
     {
         Product *thisProduct = [[Product alloc] initWithJSONDictionary:aProduct];
@@ -68,7 +71,7 @@
     }
     
     NSMutableArray *newIndexPaths = [NSMutableArray new];
-    for(int i = 0; i < 20; i ++)
+    for(int i = previousProductCount; i < self.products.count; i ++)
     {
         [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
     }
@@ -76,6 +79,7 @@
     dispatch_async(dispatch_get_main_queue(), ^{
         [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     });
+    }//end of if
     
 }
 
@@ -97,9 +101,15 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     Product *aProduct = self.products[indexPath.row];
-    
+    if(aProduct == nil)
+    {
+        cell.textLabel.text = @"No Products Found";
+    }
+    else
+    {
     cell.textLabel.text = aProduct.productName;
     cell.detailTextLabel.text = aProduct.brand;
+    
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSData *imageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:aProduct.thumbnailURL]];
@@ -108,6 +118,7 @@
             [cell layoutSubviews];
         });
     });
+    }
     
     return cell;
 }
@@ -126,6 +137,7 @@
     [self.navigationController pushViewController:detailViewController animated:YES]; */
     
     //[self dismissViewControllerAnimated:YES];
+    self.selectedProduct = [[Product alloc] init];
     
     self.selectedProduct = self.products[indexPath.row];
     
