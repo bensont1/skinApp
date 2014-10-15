@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Product.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    /*self.currentsList = [[NSMutableArray alloc] init];
+    self.favoritesList = [[NSMutableArray alloc] init];
+    self.dislikesList = [[NSMutableArray alloc] init];*/
+    
+    //self.listHelper = [[List alloc] init];
+    //self.main = self;
+
 }
 
 - (void)didReceiveMemoryWarning {

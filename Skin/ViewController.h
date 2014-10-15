@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "List.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UITabBarController
 
+//@property List *listHelper;
+//@property ViewController *main;
 
 @end
 

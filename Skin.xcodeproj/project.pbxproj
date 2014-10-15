@@ -18,6 +18,10 @@
 		57DDBBA119E1024200D2CD54 /* ProductSearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBA019E1024200D2CD54 /* ProductSearchTableViewController.m */; };
 		57DDBBA419E1062300D2CD54 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBA319E1062300D2CD54 /* Product.m */; };
 		57DDBBA619E10A1700D2CD54 /* FactualSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DDBBA519E10A1700D2CD54 /* FactualSDK.framework */; };
+		57DDBBF319EDF8AD00D2CD54 /* List.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBF219EDF8AD00D2CD54 /* List.m */; };
+		57DDBBF619EE117800D2CD54 /* CurrentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBF519EE117800D2CD54 /* CurrentsTableViewController.m */; };
+		57DDBBF919EE118C00D2CD54 /* FavoritesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBF819EE118C00D2CD54 /* FavoritesTableViewController.m */; };
+		57DDBBFC19EE11A000D2CD54 /* DislikesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBBFB19EE11A000D2CD54 /* DislikesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,14 @@
 		57DDBBA219E1062300D2CD54 /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Product.h; path = ../Product.h; sourceTree = "<group>"; };
 		57DDBBA319E1062300D2CD54 /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Product.m; path = ../Product.m; sourceTree = "<group>"; };
 		57DDBBA519E10A1700D2CD54 /* FactualSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FactualSDK.framework; path = ../../Downloads/FactualSDK.framework; sourceTree = "<group>"; };
+		57DDBBF119EDF8AD00D2CD54 /* List.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = List.h; sourceTree = "<group>"; };
+		57DDBBF219EDF8AD00D2CD54 /* List.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = List.m; sourceTree = "<group>"; };
+		57DDBBF419EE117800D2CD54 /* CurrentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentsTableViewController.h; sourceTree = "<group>"; };
+		57DDBBF519EE117800D2CD54 /* CurrentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentsTableViewController.m; sourceTree = "<group>"; };
+		57DDBBF719EE118C00D2CD54 /* FavoritesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesTableViewController.h; sourceTree = "<group>"; };
+		57DDBBF819EE118C00D2CD54 /* FavoritesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesTableViewController.m; sourceTree = "<group>"; };
+		57DDBBFA19EE11A000D2CD54 /* DislikesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DislikesTableViewController.h; sourceTree = "<group>"; };
+		57DDBBFB19EE11A000D2CD54 /* DislikesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DislikesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +108,8 @@
 			children = (
 				57DDBBA219E1062300D2CD54 /* Product.h */,
 				57DDBBA319E1062300D2CD54 /* Product.m */,
+				57DDBBF119EDF8AD00D2CD54 /* List.h */,
+				57DDBBF219EDF8AD00D2CD54 /* List.m */,
 				57DDBB1619DCD0BD00D2CD54 /* AppDelegate.h */,
 				57DDBB1719DCD0BD00D2CD54 /* AppDelegate.m */,
 				57DDBB1919DCD0BD00D2CD54 /* ViewController.h */,
@@ -105,6 +119,12 @@
 				57DDBB9D19E0F45200D2CD54 /* AddAProductViewController.m */,
 				57DDBB9F19E1024200D2CD54 /* ProductSearchTableViewController.h */,
 				57DDBBA019E1024200D2CD54 /* ProductSearchTableViewController.m */,
+				57DDBBF419EE117800D2CD54 /* CurrentsTableViewController.h */,
+				57DDBBF519EE117800D2CD54 /* CurrentsTableViewController.m */,
+				57DDBBF719EE118C00D2CD54 /* FavoritesTableViewController.h */,
+				57DDBBF819EE118C00D2CD54 /* FavoritesTableViewController.m */,
+				57DDBBFA19EE11A000D2CD54 /* DislikesTableViewController.h */,
+				57DDBBFB19EE11A000D2CD54 /* DislikesTableViewController.m */,
 				57DDBB1F19DCD0BD00D2CD54 /* Images.xcassets */,
 				57DDBB2119DCD0BD00D2CD54 /* LaunchScreen.xib */,
 				57DDBB1219DCD0BD00D2CD54 /* Supporting Files */,
@@ -241,7 +261,11 @@
 				57DDBB9E19E0F45200D2CD54 /* AddAProductViewController.m in Sources */,
 				57DDBBA119E1024200D2CD54 /* ProductSearchTableViewController.m in Sources */,
 				57DDBB1B19DCD0BD00D2CD54 /* ViewController.m in Sources */,
+				57DDBBFC19EE11A000D2CD54 /* DislikesTableViewController.m in Sources */,
 				57DDBBA419E1062300D2CD54 /* Product.m in Sources */,
+				57DDBBF319EDF8AD00D2CD54 /* List.m in Sources */,
+				57DDBBF619EE117800D2CD54 /* CurrentsTableViewController.m in Sources */,
+				57DDBBF919EE118C00D2CD54 /* FavoritesTableViewController.m in Sources */,
 				57DDBB1819DCD0BD00D2CD54 /* AppDelegate.m in Sources */,
 				57DDBB1519DCD0BD00D2CD54 /* main.m in Sources */,
 			);

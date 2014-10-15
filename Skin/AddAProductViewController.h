@@ -10,6 +10,7 @@
 #import "ProductSearchTableViewController.h"
 #import "Product.h"
 
+
 @interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ProductSearchTableDelegate>
 
 //@property NSObject *productToAddasObj;

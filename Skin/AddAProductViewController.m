@@ -7,13 +7,18 @@
 //
 
 #import "AddAProductViewController.h"
+#import "CurrentsTableViewController.h"
+#import "FavoritesTableViewController.h"
+#import "DislikesTableViewController.h"
+#import "List.h"
 
 @interface AddAProductViewController ()
+- (IBAction)addAProduct:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *productLabel;
 @property (weak, nonatomic) IBOutlet UITextField *productTextField;
 @property (weak, nonatomic) IBOutlet UIPickerView *listPicker;
 @property Product *productToAdd;
-
+@property List *main;
 
 @end
 
@@ -28,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.main = [List sharedList];
     self.productLabel.text = @"";
 }
 
@@ -63,6 +68,30 @@
         
         NSLog(@"in prepare for product search...");
     }
+    /*else
+    {
+        if([segue.identifier isEqualToString:@"toCurrent"])
+        {
+            CurrentsTableViewController *dest = segue.destinationViewController;
+            [dest.currentsList addObject:self.productToAdd];
+        }
+        else
+        {
+            if([segue.identifier isEqualToString:@"toFavorites"])
+            {
+                FavoritesTableViewController *dest = segue.destinationViewController;
+                [dest.favoritesList addObject:self.productToAdd];
+            }
+            else
+            {
+                if([segue.identifier isEqualToString:@"toDislikes"])
+                {
+                    DislikesTableViewController *dest = segue.destinationViewController;
+                    [dest.dislikesList addObject:self.productToAdd];
+                }
+            }
+        }
+    }*/
 
     
 }
@@ -124,14 +153,31 @@
     return [productLists objectAtIndex:row];
 }
 
-/*-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    //we should also be checking if the segue is the one we want
-    //Get that shared bookshelf
-    Bookshelf *books = [Bookshelf sharedBookshelf];
+- (IBAction)addAProduct:(id)sender {
     
-    //Which book?
-    int index = [self.picker selectedRowInComponent : 0 ];
-    books.currentBook = [ books.booklist objectAtIndex: index];
-}*/
-
+    int index = [self.listPicker selectedRowInComponent:0];
+    
+    if(index == 0)
+    {
+        //[self performSegueWithIdentifier:@"toCurrent" sender:self];
+        
+        //CurrentsTableViewController *dest = (CurrentsTableViewController *) [[(UINavigationController *) [[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
+        //[dest.currentsList addObject:self.productToAdd];
+        [self.main.currentsList addObject:self.productToAdd];
+        [self.tabBarController setSelectedIndex:1];
+    }
+    else
+    {
+        if(index == 1)
+        {
+            [self performSegueWithIdentifier:@"toFavorites" sender:self];
+        }
+        else
+        {
+            [self performSegueWithIdentifier:@"toDislikes" sender:self];
+        }
+    }
+    
+    
+}
 @end
