@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 klcrozie. All rights reserved.
 //
 
+#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import "CurrentsTableViewController.h"
 
@@ -18,7 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [Parse setApplicationId:@"OYYjStoW5zpfIEVqc0yTPRkoUhoIUtM5e353fJuz"
+                  clientKey:@"ewCyG5hEoMtcHcPZbOU9ebwaUHsIKdVJHzURdite"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     return YES;
 }

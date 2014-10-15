@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 #import "ProductSearchTableViewController.h"
 #import "Product.h"
+
 
 
 @interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ProductSearchTableDelegate>

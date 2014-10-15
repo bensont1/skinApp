@@ -35,6 +35,7 @@
     // Do any additional setup after loading the view.
     self.main = [List sharedList];
     self.productLabel.text = @"";
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,6 +157,7 @@
 - (IBAction)addAProduct:(id)sender {
     
     int index = [self.listPicker selectedRowInComponent:0];
+    PFObject *testObject;
     
     if(index == 0)
     {
@@ -163,6 +165,12 @@
         
         //CurrentsTableViewController *dest = (CurrentsTableViewController *) [[(UINavigationController *) [[self.tabBarController viewControllers] objectAtIndex:1] viewControllers] objectAtIndex:0];
         //[dest.currentsList addObject:self.productToAdd];
+        testObject = [PFObject objectWithClassName:@"TestObject"];
+        testObject[@"productName"] = self.productToAdd.productName;
+        testObject[@"brand"] = self.productToAdd.brand;
+        testObject[@"ingredients"] = self.productToAdd.ingredients;
+        [testObject saveInBackground];
+        
         [self.main.currentsList addObject:self.productToAdd];
         [self.tabBarController setSelectedIndex:1];
     }
