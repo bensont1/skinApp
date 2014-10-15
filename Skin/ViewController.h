@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "List.h"
+#import "Product.h"
 
 @interface ViewController : UIViewController
 
+@property Product *passedProduct;
 
 @end
 

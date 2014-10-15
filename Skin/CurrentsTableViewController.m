@@ -9,7 +9,7 @@
 #import "CurrentsTableViewController.h"
 #import "Product.h"
 #import "List.h"
-//#import "ViewController.h"
+#import "ViewController.h"
 
 @interface CurrentsTableViewController ()
 @property List *main;
@@ -28,7 +28,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     //self.currentsList = [[NSMutableArray alloc] init];
     self.main = [List sharedList];
-    NSLog([NSString stringWithFormat:@"%@",self.main.currentsList]);
+    //NSLog([NSString stringWithFormat:@"%@",self.main.currentsList]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -97,14 +97,17 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    ViewController *dest = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    dest.passedProduct = self.main.currentsList[indexPath.row];
 }
-*/
+
 
 @end

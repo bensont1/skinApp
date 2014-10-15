@@ -9,7 +9,7 @@
 #import "DislikesTableViewController.h"
 #import "Product.h"
 #import "List.h"
-//#import "ViewController.h"
+#import "ViewController.h"
 
 @interface DislikesTableViewController ()
 
@@ -100,14 +100,41 @@
 }
 */
 
-/*
+/*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    SPTArticleDetailViewController *detailViewController = [[SPTArticleDetailViewController alloc] initWithNibName:@"SPTArticleDetailViewController" bundle:nil];
+     
+     // Pass the selected object to the new view controller.
+     
+     NSDictionary *dictTemp = [arrItems objectAtIndex:indexPath.row];
+     detailViewController.strDesc = [dictTemp objectForKey:@"Desc"];
+     
+     // Push the view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+    
+    //[self dismissViewControllerAnimated:YES];
+    //self.selectedProduct = [[Product alloc] init];
+    
+    self.selectedProduct = self.main.dislikesList[indexPath.row];
+    
+    //[self.delegate ProductSearchTableViewController:self didFinishAddingItem:self.selectedProduct];
+    //[self performSegueWithIdentifier:@"productSelected" sender:self];
+    //[self dismissViewControllerAnimated:YES completion: nil];
+    
+}*/
+
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    ViewController *dest = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    dest.passedProduct = self.main.dislikesList[indexPath.row];
 }
-*/
+
 
 @end

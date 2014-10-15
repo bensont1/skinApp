@@ -7,6 +7,7 @@
 //
 #import "AddAProductViewController.h"
 #import "ProductSearchTableViewController.h"
+#import "ImageCache.h"
 
 #define kProductBaseURL @"http://api.v3.factual.com/t/products-cpg-nutrition"
 #define kProductAPIKey @"q64jrzULu3dY7ozineqqGWUBHjCCQfA8Oc8gnr7S"
@@ -17,6 +18,7 @@
 
 @property NSMutableArray *products;
 @property Product *selectedProduct;
+@property NSString *prevQuery;
 //@property id delegate;
 
 @end
@@ -53,33 +55,41 @@
 
 -(void) grabProductData
 {
+    self.query = [self.query stringByReplacingOccurrencesOfString:@" " withString:@"+"];
     NSString *queryString = [NSString stringWithFormat:@"%@?KEY=%@&q=%@", kProductBaseURL, kProductAPIKey, self.query];
     NSData *totalProductQuery = [NSData dataWithContentsOfURL:[NSURL URLWithString:queryString]];
     NSDictionary *products = [NSJSONSerialization JSONObjectWithData:totalProductQuery options:kNilOptions error:Nil];
     
     NSDictionary *response = products[@"response"];
-    NSArray *theProducts = response[@"data"];
+    if ([response objectForKey:@"data"] != nil) {
+
+        NSArray *theProducts = response[@"data"];
     
-    int previousProductCount = self.products.count;
+        int previousProductCount = self.products.count;
     
-    if(theProducts != nil)
-    {
-    for (NSDictionary *aProduct in theProducts)
-    {
-        Product *thisProduct = [[Product alloc] initWithJSONDictionary:aProduct];
-        [self.products addObject:thisProduct];
-    }
+        if(theProducts != nil)
+        {
+            for (NSDictionary *aProduct in theProducts)
+            {
+                Product *thisProduct = [[Product alloc] initWithJSONDictionary:aProduct];
+                [self.products addObject:thisProduct];
+            }
     
-    NSMutableArray *newIndexPaths = [NSMutableArray new];
-    for(int i = previousProductCount; i < self.products.count; i ++)
-    {
-        [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
-    }
+            NSMutableArray *newIndexPaths = [NSMutableArray new];
+            for(int i = previousProductCount; i < self.products.count; i ++)
+            {
+                [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+            }
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-    });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+            });
+        }//end of if
     }//end of if
+    else
+    {
+        self.products[0] = nil;
+    }
     
 }
 
@@ -107,18 +117,29 @@
     }
     else
     {
-    cell.textLabel.text = aProduct.productName;
-    cell.detailTextLabel.text = aProduct.brand;
+        cell.textLabel.text = aProduct.productName;
+        cell.detailTextLabel.text = aProduct.brand;
     
+        if (self.query == self.prevQuery) {
+            [[ImageCache sharedInstance] downloadImageAtURL:[NSURL URLWithString:aProduct.thumbnailURL] completionHandler:^(UIImage *image) {
+                cell.imageView.image = image;
+                [cell setNeedsLayout];
+            }];
+        }
+        else
+        {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *imageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:aProduct.thumbnailURL]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    cell.imageView.image = [UIImage imageWithData:imageData];
+                    [cell layoutSubviews];
+                });
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSData *imageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:aProduct.thumbnailURL]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            cell.imageView.image = [UIImage imageWithData:imageData];
-            [cell layoutSubviews];
-        });
-    });
-    }
+            });
+        } //end of else
+    } //end of else
+    
+    self.prevQuery = self.query;
     
     return cell;
 }

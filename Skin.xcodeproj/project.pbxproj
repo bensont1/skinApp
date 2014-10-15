@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5794048319EF2151005577F8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5794048219EF2151005577F8 /* CoreGraphics.framework */; };
+		5794048519EF2158005577F8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5794048419EF2158005577F8 /* UIKit.framework */; };
+		5794048719EF2162005577F8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5794048619EF2162005577F8 /* Foundation.framework */; };
+		5794049119EF2641005577F8 /* ImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 5794049019EF2641005577F8 /* ImageCache.m */; };
 		57DDBB1519DCD0BD00D2CD54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB1419DCD0BD00D2CD54 /* main.m */; };
 		57DDBB1819DCD0BD00D2CD54 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB1719DCD0BD00D2CD54 /* AppDelegate.m */; };
 		57DDBB1B19DCD0BD00D2CD54 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB1A19DCD0BD00D2CD54 /* ViewController.m */; };
@@ -35,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5794048219EF2151005577F8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5794048419EF2158005577F8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5794048619EF2162005577F8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5794048F19EF2641005577F8 /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageCache.h; path = ../ImageCache.h; sourceTree = "<group>"; };
+		5794049019EF2641005577F8 /* ImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageCache.m; path = ../ImageCache.m; sourceTree = "<group>"; };
 		57DDBB0F19DCD0BD00D2CD54 /* Skin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DDBB1319DCD0BD00D2CD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57DDBB1419DCD0BD00D2CD54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,6 +79,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5794048719EF2162005577F8 /* Foundation.framework in Frameworks */,
+				5794048519EF2158005577F8 /* UIKit.framework in Frameworks */,
+				5794048319EF2151005577F8 /* CoreGraphics.framework in Frameworks */,
 				57DDBBA619E10A1700D2CD54 /* FactualSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +99,9 @@
 		57DDBB0619DCD0BD00D2CD54 = {
 			isa = PBXGroup;
 			children = (
+				5794048619EF2162005577F8 /* Foundation.framework */,
+				5794048419EF2158005577F8 /* UIKit.framework */,
+				5794048219EF2151005577F8 /* CoreGraphics.framework */,
 				57DDBBA519E10A1700D2CD54 /* FactualSDK.framework */,
 				57DDBB1119DCD0BD00D2CD54 /* Skin */,
 				57DDBB2B19DCD0BD00D2CD54 /* SkinTests */,
@@ -106,6 +121,8 @@
 		57DDBB1119DCD0BD00D2CD54 /* Skin */ = {
 			isa = PBXGroup;
 			children = (
+				5794048F19EF2641005577F8 /* ImageCache.h */,
+				5794049019EF2641005577F8 /* ImageCache.m */,
 				57DDBBA219E1062300D2CD54 /* Product.h */,
 				57DDBBA319E1062300D2CD54 /* Product.m */,
 				57DDBBF119EDF8AD00D2CD54 /* List.h */,
@@ -263,6 +280,7 @@
 				57DDBB1B19DCD0BD00D2CD54 /* ViewController.m in Sources */,
 				57DDBBFC19EE11A000D2CD54 /* DislikesTableViewController.m in Sources */,
 				57DDBBA419E1062300D2CD54 /* Product.m in Sources */,
+				5794049119EF2641005577F8 /* ImageCache.m in Sources */,
 				57DDBBF319EDF8AD00D2CD54 /* List.m in Sources */,
 				57DDBBF619EE117800D2CD54 /* CurrentsTableViewController.m in Sources */,
 				57DDBBF919EE118C00D2CD54 /* FavoritesTableViewController.m in Sources */,
