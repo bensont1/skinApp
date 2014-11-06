@@ -12,7 +12,7 @@
 @class ProductSearchTableViewController;
 
 @protocol ProductSearchTableDelegate <NSObject>
-
+//passing back selected product
 - (void)ProductSearchTableViewController:(ProductSearchTableViewController *)controller didFinishAddingItem:(Product *)item;
 
 @end
@@ -21,6 +21,7 @@
 @interface ProductSearchTableViewController : UITableViewController
 
 @property NSString *query;
+
 
 @property (weak, nonatomic) id<ProductSearchTableDelegate> delegate;
 

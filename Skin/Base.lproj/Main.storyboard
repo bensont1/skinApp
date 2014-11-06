@@ -16,14 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxu-E3-5RC">
-                                <rect key="frame" x="16" y="40" width="166" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Product Name or Brand:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kxu-E3-5RC">
+                                <rect key="frame" x="16" y="79" width="226" height="26"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rPt-VA-zCy">
-                                <rect key="frame" x="25" y="68" width="270" height="30"/>
+                                <rect key="frame" x="25" y="113" width="270" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -51,13 +51,13 @@
                                 </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7T-BA-jX9">
-                                <rect key="frame" x="16" y="154" width="279" height="21"/>
+                                <rect key="frame" x="16" y="189" width="279" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.88666666839999997" green="0.70500935450000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NGH-pf-KEi">
-                                <rect key="frame" x="177" y="106" width="107" height="30"/>
+                                <rect key="frame" x="177" y="151" width="107" height="30"/>
                                 <state key="normal" title="Product Search">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -65,10 +65,17 @@
                                     <segue destination="bf3-F9-9L6" kind="presentation" identifier="productSearch" id="ywo-DJ-xTd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a Skincare Product" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0v-Wc-Jz4">
+                                <rect key="frame" x="51" y="28" width="219" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="xM9-cs-9g5"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="listPicker" destination="VCo-8E-LEn" id="I57-fi-9CS"/>
@@ -87,9 +94,13 @@
             <objects>
                 <tableViewController title="Which is your product?" id="bf3-F9-9L6" customClass="ProductSearchTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="VVQ-s1-tA9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" id="DE7-54-Y1O">
+                            <rect key="frame" x="0.0" y="66" width="320" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="ljJ-c9-gAF" detailTextLabel="KSo-Fc-CIl" style="IBUITableViewCellStyleSubtitle" id="a4Y-lR-ccy">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -120,8 +131,10 @@
                             <outlet property="delegate" destination="bf3-F9-9L6" id="58D-7Y-4K3"/>
                         </connections>
                     </tableView>
+                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="loaderIcon" destination="DE7-54-Y1O" id="M1b-1f-ULq"/>
                         <outlet property="tableView" destination="VVQ-s1-tA9" id="soP-BP-h3t"/>
                     </connections>
                 </tableViewController>
@@ -139,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="current" textLabel="90j-17-GTc" detailTextLabel="f2U-Vn-dYe" style="IBUITableViewCellStyleSubtitle" id="yt8-b3-5BD">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="current" textLabel="90j-17-GTc" detailTextLabel="f2U-Vn-dYe" style="IBUITableViewCellStyleSubtitle" id="yt8-b3-5BD">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yt8-b3-5BD" id="bYL-iY-c5K">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -197,7 +210,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="favorite" textLabel="hiE-PB-YkE" detailTextLabel="0L1-ah-JGb" style="IBUITableViewCellStyleSubtitle" id="b2M-sR-IcY">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="favorite" textLabel="hiE-PB-YkE" detailTextLabel="0L1-ah-JGb" style="IBUITableViewCellStyleSubtitle" id="b2M-sR-IcY">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b2M-sR-IcY" id="4s7-YN-RY7">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -292,7 +305,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="dislike" textLabel="ogX-gO-z94" detailTextLabel="Bw8-db-9TS" style="IBUITableViewCellStyleSubtitle" id="3gR-5e-865">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dislike" textLabel="ogX-gO-z94" detailTextLabel="Bw8-db-9TS" style="IBUITableViewCellStyleSubtitle" id="3gR-5e-865">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3gR-5e-865" id="neJ-Um-g7l">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -425,7 +438,6 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="eva-t5-MqQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add a Product" id="v25-iF-wtI"/>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AGl-4a-Adb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -441,8 +453,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="p8L-bi-AMq"/>
-        <segue reference="yws-qQ-bEY"/>
-        <segue reference="4Oe-b1-DqZ"/>
+        <segue reference="gEa-ns-PTx"/>
+        <segue reference="cFY-NL-vGu"/>
+        <segue reference="zqR-tQ-mt2"/>
     </inferredMetricsTieBreakers>
 </document>

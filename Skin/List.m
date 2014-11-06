@@ -8,6 +8,8 @@
 
 #import "List.h"
 
+
+//List holds copy of all lists for use without cloud - populating currents and favorites lists
 @implementation List
 
 -(id)init
@@ -17,13 +19,13 @@
         self.currentsList = [[NSMutableArray alloc]init];
         self.favoritesList = [[NSMutableArray alloc] init];
         self.dislikesList = [[NSMutableArray alloc] init];
-        //self.listofLists =[[NSMutableArray alloc] initWithObjects:self.currentsList, self.favoritesList, self.dislikesList, nil];
     }
     return self;
 }
 
 static List *theLIST = nil;
 
+//THANK THE GODS OF CODE FOR SINGLETONS
 + (List *) sharedList {
     // Initialize our global variable if needed.
     if (theLIST == nil) {

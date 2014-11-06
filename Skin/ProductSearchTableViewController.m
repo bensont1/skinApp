@@ -19,7 +19,7 @@
 @property NSMutableArray *products;
 @property Product *selectedProduct;
 @property NSString *prevQuery;
-//@property id delegate;
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *loaderIcon;
 
 @end
 
@@ -34,8 +34,13 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //animating load indicator
+    [self.loaderIcon startAnimating];
+    
+    //initializing array to hold products from search query
     self.products = [[NSMutableArray alloc] init];
     
+    //grabbing product data
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self grabProductData];
     });
@@ -55,41 +60,51 @@
 
 -(void) grabProductData
 {
+    //losing spaces in query string
     self.query = [self.query stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    
+    //creating full query URL
     NSString *queryString = [NSString stringWithFormat:@"%@?KEY=%@&q=%@", kProductBaseURL, kProductAPIKey, self.query];
     NSData *totalProductQuery = [NSData dataWithContentsOfURL:[NSURL URLWithString:queryString]];
+    //creating dictionary with results
     NSDictionary *products = [NSJSONSerialization JSONObjectWithData:totalProductQuery options:kNilOptions error:Nil];
     
+    NSMutableArray *newIndexPaths = [NSMutableArray new];
+    
     NSDictionary *response = products[@"response"];
-    if ([response objectForKey:@"data"] != nil) {
+    if ([response objectForKey:@"data"] != nil) { //making sure there's product data to get
 
-        NSArray *theProducts = response[@"data"];
+        NSArray *theProducts = response[@"data"]; //finally getting product data
     
         int previousProductCount = self.products.count;
     
-        if(theProducts != nil)
+        if(theProducts != nil) //if no products, should be caught above with data parameter, but just in case
         {
+            //creating an array of products
             for (NSDictionary *aProduct in theProducts)
             {
                 Product *thisProduct = [[Product alloc] initWithJSONDictionary:aProduct];
                 [self.products addObject:thisProduct];
             }
     
-            NSMutableArray *newIndexPaths = [NSMutableArray new];
             for(int i = previousProductCount; i < self.products.count; i ++)
             {
                 [newIndexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
             }
     
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-            });
         }//end of if
     }//end of if
     else
     {
-        self.products[0] = nil;
+        self.products[0] = nil; //if no products
     }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.tableView insertRowsAtIndexPaths:newIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    });
+    
+    //stopping the loading indicator
+    [self.loaderIcon stopAnimating];
     
 }
 
@@ -109,9 +124,10 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //initialize cells with query results
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     Product *aProduct = self.products[indexPath.row];
-    if(aProduct == nil)
+    if(self.products[0] == nil)
     {
         cell.textLabel.text = @"No Products Found";
     }
@@ -120,6 +136,7 @@
         cell.textLabel.text = aProduct.productName;
         cell.detailTextLabel.text = aProduct.brand;
     
+        //if the same query entered twice, images will be produced from cache not looked up again
         if (self.query == self.prevQuery) {
             [[ImageCache sharedInstance] downloadImageAtURL:[NSURL URLWithString:aProduct.thumbnailURL] completionHandler:^(UIImage *image) {
                 cell.imageView.image = image;
@@ -128,6 +145,7 @@
         }
         else
         {
+            //threading get image data...
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
                 NSData *imageData =[NSData dataWithContentsOfURL:[NSURL URLWithString:aProduct.thumbnailURL]];
                 dispatch_async(dispatch_get_main_queue(), ^{
@@ -146,42 +164,17 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    /*SPTArticleDetailViewController *detailViewController = [[SPTArticleDetailViewController alloc] initWithNibName:@"SPTArticleDetailViewController" bundle:nil];
-    
-    // Pass the selected object to the new view controller.
-    
-    NSDictionary *dictTemp = [arrItems objectAtIndex:indexPath.row];
-    detailViewController.strDesc = [dictTemp objectForKey:@"Desc"];
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES]; */
-    
-    //[self dismissViewControllerAnimated:YES];
+    //selected product saved and sent back to add product view controller
     self.selectedProduct = [[Product alloc] init];
     
     self.selectedProduct = self.products[indexPath.row];
     
     [self.delegate ProductSearchTableViewController:self didFinishAddingItem:self.selectedProduct];
-    //[self performSegueWithIdentifier:@"productSelected" sender:self];
-    //[self dismissViewControllerAnimated:YES completion: nil];
+
     
 }
 
-- (IBAction)unwindToAddAProduct:(UIStoryboardSegue *)unwindSegue {
-    /*if ([unwindSegue.sourceViewController isKindOfClass:[ProductSearchTableViewController class]]) {
-        ProductSearchTableViewController *productSearchViewController = unwindSegue.sourceViewController;
-
-        if (productSearchViewController.selectedProduct) {
-            self.productToAdd = productSearchViewController.selectedProduct;
-        }
-    }*/
-    
-    NSLog(@"in unwind segue");
-    
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
@@ -189,7 +182,7 @@
     //dest.productToAddasObj = self.selectedProduct;
     //[dest createSelectedProduct:self.selectedProduct.brand productName:self.selectedProduct.productName ingredients:self.selectedProduct.ingredients thumbnailURL:self.selectedProduct.thumbnailURL];
     //add call to dest function to create Product from new NSObject in addaproductcontroller?
-}
+}*/
 
 
 

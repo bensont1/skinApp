@@ -14,10 +14,27 @@
 @interface FavoritesTableViewController ()
 
 @property List *main;
+@property NSString *detailTextKey;
 
 @end
 
 @implementation FavoritesTableViewController
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if(self)
+    {
+        self.parseClassName = @"FavoriteProducts";
+        self.textKey = @"productName";
+        
+        self.detailTextKey = @"brand";
+        
+        // Whether the built−in pull−to−refresh is enabled
+        self.pullToRefreshEnabled = YES;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,6 +46,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.main = [List sharedList];
     //self.favoritesList = [[NSMutableArray alloc] init];
+    [self loadObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,9 +54,31 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view. - now can swipe to show delete option
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Editing");
+    if (editingStyle == UITableViewCellEditingStyleDelete) { //edit = delete option
+        //find selected object
+        PFObject *object = [self.objects objectAtIndex:indexPath.row];
+        [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) { //delete object, then reload objects
+            [self loadObjects];
+        }];
+    }
+}
+
+/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 //#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
@@ -48,16 +88,27 @@
 //#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return self.main.favoritesList.count;
-}
+}*/
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favorite" forIndexPath:indexPath];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favorite" forIndexPath:indexPath];
+    PFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"favorite" forIndexPath:indexPath];
     
     // Configure the cell...
-    Product *productinCell = (Product *) [self.main.favoritesList objectAtIndex:indexPath.row];
-    cell.textLabel.text = productinCell.productName;
-    cell.detailTextLabel.text = productinCell.brand;
+    /*Product *productinCell = (Product *) [self.main.currentsList objectAtIndex:indexPath.row];
+     cell.textLabel.text = productinCell.productName;
+     cell.detailTextLabel.text = productinCell.brand;*/
+    
+    if (cell == nil)
+    {
+        cell = [[PFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"favorite"];
+    }
+    
+    PFObject *object = [self.objects objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [object objectForKey:self.textKey];
+    cell.detailTextLabel.text = [object objectForKey:self.detailTextKey];
     
     return cell;
 }
@@ -101,13 +152,13 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+/*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     ViewController *dest = segue.destinationViewController;
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     dest.passedProduct = self.main.favoritesList[indexPath.row];
-}
+}*/
 
 
 @end

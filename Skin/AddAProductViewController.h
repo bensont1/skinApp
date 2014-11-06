@@ -13,9 +13,7 @@
 
 
 
-@interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ProductSearchTableDelegate>
+@interface AddAProductViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate, ProductSearchTableDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
-//@property NSObject *productToAddasObj;
-//-(void)createSelectedProduct:(NSString *) brand productName:(NSString *)productName ingredients:(NSArray *)ingredients thumbnailURL:(NSString *)thumbnailURL;
 
 @end

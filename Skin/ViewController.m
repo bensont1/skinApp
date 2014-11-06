@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+//this controls the detail view for products -- see it in action in the currents and favorites lists
+
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *productDetailLabel;
 @property (weak, nonatomic) IBOutlet UILabel *productNameLabel;
@@ -23,7 +25,6 @@
     self.productNameLabel.text = self.passedProduct.productName;
     self.productDetailLabel.text = self.passedProduct.brand;
     
-    NSLog([NSString stringWithFormat:@"in view controller %@ %@", self.passedProduct.brand, self.passedProduct.productName]);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface FavoritesTableViewController : UITableViewController
+@interface FavoritesTableViewController : PFQueryTableViewController //UITableViewController
 
-//@property NSMutableArray *favoritesList;
 
 @end

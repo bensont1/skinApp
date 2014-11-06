@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface DislikesTableViewController : UITableViewController
+@interface DislikesTableViewController : PFQueryTableViewController
 
-//@property NSMutableArray *dislikesList;
 
 @end

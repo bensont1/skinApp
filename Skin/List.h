@@ -10,8 +10,6 @@
 
 @interface List : NSObject
 
-//@property NSMutableArray *listofLists;
-
 @property NSMutableArray *currentsList;
 @property NSMutableArray *favoritesList;
 @property NSMutableArray *dislikesList;

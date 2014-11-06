@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface CurrentsTableViewController : UITableViewController
-
-//@property NSMutableArray *currentsList;
+@interface CurrentsTableViewController : PFQueryTableViewController //UITableViewController
 
 @end

@@ -23,6 +23,9 @@
 		579404A519EF2AF5005577F8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579404A419EF2AF5005577F8 /* Security.framework */; };
 		579404A719EF2B00005577F8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579404A619EF2B00005577F8 /* StoreKit.framework */; };
 		579404A919EF2B1A005577F8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579404A819EF2B1A005577F8 /* SystemConfiguration.framework */; };
+		579404AB19EF3209005577F8 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579404AA19EF3209005577F8 /* Twitter.framework */; };
+		579404AD19EF3234005577F8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579404AC19EF3234005577F8 /* Social.framework */; };
+		579404AF19EF324C005577F8 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579404AE19EF324C005577F8 /* Accounts.framework */; };
 		57DDBB1519DCD0BD00D2CD54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB1419DCD0BD00D2CD54 /* main.m */; };
 		57DDBB1819DCD0BD00D2CD54 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB1719DCD0BD00D2CD54 /* AppDelegate.m */; };
 		57DDBB1B19DCD0BD00D2CD54 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DDBB1A19DCD0BD00D2CD54 /* ViewController.m */; };
@@ -68,6 +71,9 @@
 		579404A419EF2AF5005577F8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		579404A619EF2B00005577F8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		579404A819EF2B1A005577F8 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		579404AA19EF3209005577F8 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		579404AC19EF3234005577F8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		579404AE19EF324C005577F8 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		57DDBB0F19DCD0BD00D2CD54 /* Skin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Skin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		57DDBB1319DCD0BD00D2CD54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		57DDBB1419DCD0BD00D2CD54 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -103,6 +109,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579404AF19EF324C005577F8 /* Accounts.framework in Frameworks */,
+				579404AD19EF3234005577F8 /* Social.framework in Frameworks */,
+				579404AB19EF3209005577F8 /* Twitter.framework in Frameworks */,
 				579404A919EF2B1A005577F8 /* SystemConfiguration.framework in Frameworks */,
 				579404A719EF2B00005577F8 /* StoreKit.framework in Frameworks */,
 				579404A519EF2AF5005577F8 /* Security.framework in Frameworks */,
@@ -135,6 +144,9 @@
 		57DDBB0619DCD0BD00D2CD54 = {
 			isa = PBXGroup;
 			children = (
+				579404AE19EF324C005577F8 /* Accounts.framework */,
+				579404AC19EF3234005577F8 /* Social.framework */,
+				579404AA19EF3209005577F8 /* Twitter.framework */,
 				57DDBB1119DCD0BD00D2CD54 /* Skin */,
 				579404A819EF2B1A005577F8 /* SystemConfiguration.framework */,
 				579404A619EF2B00005577F8 /* StoreKit.framework */,
