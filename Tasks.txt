@@ -8,6 +8,3 @@ Optional Implementation Tasks
 6) implement user ratings for products on the current and favorite products lists, and organize the list by rating
 7) organize lists by category (the app currently does not grab category data from the Factual data GET, but the information is there)
 8) implement the ability to allow the user to reorder the current products list if they so choose (so they can order it by order of use)
-9) implement ability to "track" skin
-        -add ability to take picture in the app and save to a photo gallery with visible time stamp
-        -potentially allow ability to caption photo, or save the current products at that moment with the photo, so the used products can be referenced with photo evidence at later date
