@@ -1,0 +1,13 @@
+Optional Implementation Tasks
+1) implement multiple users - each with a different set of product lists
+2) implement a pan gesture (or probably a screen edge pan gesture) to move between lists in the tab view
+3) implement the detail view for each cell on the lists (include product name, brand, image, ingredients)
+        -in the detail view, add the ability for the user to put in their own notes on the product that are saved to the cloud
+4) implement the ability to allow user to create own lists to add to tab bar controller, and add products to those lists
+5) implement way to move products between lists
+6) implement user ratings for products on the current and favorite products lists, and organize the list by rating
+7) organize lists by category (the app currently does not grab category data from the Factual data GET, but the information is there)
+8) implement the ability to allow the user to reorder the current products list if they so choose (so they can order it by order of use)
+9) implement ability to "track" skin
+        -add ability to take picture in the app and save to a photo gallery with visible time stamp
+        -potentially allow ability to caption photo, or save the current products at that moment with the photo, so the used products can be referenced with photo evidence at later date
